@@ -1,0 +1,147 @@
+
+body{
+  background: url("./background.jpg") no-repeat center center fixed;
+  background-size: cover;
+  font-family: Arial, sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  margin:0;
+  overflow:hidden;
+}
+
+/* Sparkle overlay */
+body::before{
+  content:"";
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.8) 2px, transparent 2px),
+    radial-gradient(circle, rgba(255,105,180,0.8) 2px, transparent 2px),
+    radial-gradient(circle, rgba(255,182,193,0.8) 2px, transparent 2px);
+  background-size:120px 120px;
+  animation:sparkleMove 20s linear infinite;
+  z-index:-1;
+}
+
+@keyframes sparkleMove{
+  from{background-position:0 0, 60px 60px, 120px 120px;}
+  to{background-position:500px 500px, 300px 300px, 200px 200px;}
+}
+
+/* Card */
+.container{
+  background: rgba(255,255,255,0.9);
+  padding:35px;
+  border-radius:22px;
+  text-align:center;
+  width:330px;
+  box-shadow:
+   0 0 15px #ff4b5c,
+   0 0 30px #ff9aa2,
+   0 0 60px #ffd1dc;
+  animation:fadeIn 2s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(40px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+h1{
+  color:#c9184a;
+  margin-bottom:10px;
+  text-shadow:0 0 8px rgba(255,105,135,0.6);
+}
+
+img{
+  width:200px;
+  margin:20px 0;
+}
+
+/* Buttons */
+.buttons{
+  display:flex;
+  justify-content:space-around;
+}
+
+button{
+  padding:12px 22px;
+  font-size:18px;
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+#yesBtn{
+  background:#38b000;
+  color:white;
+}
+
+#noBtn{
+  background:#ff4b5c;
+  color:white;
+  position:relative;
+}
+
+button:hover{
+  transform:scale(1.15);
+}
+
+/* Text */
+#message{
+  margin-top:15px;
+  font-size:22px;
+  color:#c9184a;
+}
+
+#countdown{
+  margin-top:10px;
+  font-weight:bold;
+  color:#6a040f;
+}
+
+/* Confetti & hearts */
+.confetti,.heart{
+  position:fixed;
+  top:-10px;
+  width:12px;
+  height:12px;
+  animation:fall linear forwards;
+  border-radius:50%;
+  z-index:9999;
+}
+
+.heart{
+  background:red;
+  transform:rotate(45deg);
+}
+
+.heart:before,
+.heart:after{
+  content:"";
+  position:absolute;
+  width:12px;
+  height:12px;
+  background:red;
+  border-radius:50%;
+}
+
+.heart:before{top:-6px;left:0;}
+.heart:after{left:-6px;top:0;}
+
+@keyframes fall{
+  to{transform:translateY(100vh) rotate(720deg);}
+}
+
+/* Mobile */
+@media(max-width:500px){
+  .container{width:90%;}
+  img{width:150px;}
+  button{font-size:16px;}
+}
