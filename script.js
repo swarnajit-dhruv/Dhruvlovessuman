@@ -1,33 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+document.addEventListener("DOMContentLoaded", () => {
 
-<title>Valentine</title>
+  // Get elements
+  const yesBtn = document.getElementById("yesBtn");
+  const noBtn = document.getElementById("noBtn");
+  const cat = document.getElementById("cat");
+  const message = document.getElementById("message");
+  const music = document.getElementById("bgMusic");
 
-<link rel="stylesheet" href="./style.css">
-<script src="./script.js" defer></script>
-</head>
+  // Safety check
+  if (!yesBtn || !noBtn || !cat) {
+    console.error("Required elements not found");
+    return;
+  }
 
-<body>
+  // NO button runs away
+  noBtn.addEventListener("mouseover", () => {
+    const x = Math.random() * 200 - 100;
+    const y = Math.random() * 200 - 100;
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+  });
 
-<audio id="bgMusic" src="./music.mp3" loop></audio>
+  // YES button clicked
+  yesBtn.addEventListener("click", () => {
 
-<div class="container">
+    message.innerText = "Yayyy! I knew you'd say YES! 💖🥰";
 
-<h1 id="question">Suman will you be my Valentine? ❤️</h1>
-
-<img id="cat" src="./cat.png" alt="cute cat">
-
-<div class="buttons">
-  <button id="yesBtn">Yes</button>
-  <button id="noBtn">No</button>
-</div>
-
-<p id="message"></p>
-
-</div>
-
-</body>
-</html>
+    // Change image
